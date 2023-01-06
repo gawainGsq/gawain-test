@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-test
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: nginx-test.vm.jdydevelop.com     #自定义域名，访问时记得配hosts解析
+    http:
+      paths:
+      - backend:
+          service:
+            name: nginx-test
+            port:
+              number: 80
+        pathType: ImplementationSpecific
